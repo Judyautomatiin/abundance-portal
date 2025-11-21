@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your 2025 Abundance Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-symbol {
+            font-size: 60px;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .result-card {
+            display: none;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card.active {
+            display: block;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .result-name {
+            font-size: 32px;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .result-sign {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+
+        .affirmation-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .affirmation-text {
+            font-size: 20px;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .wealth-message {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffd700;
+        }
+
+        .wealth-message h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .wealth-message p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .action-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .screenshot-btn {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .screenshot-btn:hover {
+            background: #ffed4e;
+        }
+
+        .restart-btn {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .restart-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .result-name {
+                font-size: 26px;
+            }
+
+            .affirmation-text {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div id="welcomeScreen">
+            <div class="logo">
+                <div class="logo-symbol">✨🔑✨</div>
+                <h1>Your 2025 Abundance Portal</h1>
+                <p class="subtitle">Unlock your personalized path to prosperity</p>
+            </div>
+
+            <div class="input-group">
+                <label for="userName">Your Name</label>
+                <input type="text" id="userName" placeholder="Enter your beautiful name...">
+            </div>
+
+            <div class="input-group">
+                <label for="zodiacSign">Your Zodiac Sign</label>
+                <select id="zodiacSign">
+                    <option value="">Choose your sign...</option>
+                    <option value="aries">♈ Aries (Mar 21 - Apr 19)</option>
+                    <option value="taurus">♉ Taurus (Apr 20 - May 20)</option>
+                    <option value="gemini">♊ Gemini (May 21 - Jun 20)</option>
+                    <option value="cancer">♋ Cancer (Jun 21 - Jul 22)</option>
+                    <option value="leo">♌ Leo (Jul 23 - Aug 22)</option>
+                    <option value="virgo">♍ Virgo (Aug 23 - Sep 22)</option>
+                    <option value="libra">♎ Libra (Sep 23 - Oct 22)</option>
+                    <option value="scorpio">♏ Scorpio (Oct 23 - Nov 21)</option>
+                    <option value="sagittarius">♐ Sagittarius (Nov 22 - Dec 21)</option>
+                    <option value="capricorn">♑ Capricorn (Dec 22 - Jan 19)</option>
+                    <option value="aquarius">♒ Aquarius (Jan 20 - Feb 18)</option>
+                    <option value="pisces">♓ Pisces (Feb 19 - Mar 20)</option>
+                </select>
+            </div>
+
+            <button class="btn" onclick="unlockAbundance()">Unlock Your Abundance ✨</button>
+        </div>
+
+        <div id="resultScreen" class="result-card">
+            <div class="result-header">
+                <h2 class="result-name" id="displayName"></h2>
+                <div class="result-sign" id="displaySign"></div>
+            </div>
+
+            <div class="affirmation-box">
+                <p class="affirmation-text" id="affirmationText"></p>
+            </div>
+
+            <div class="wealth-message">
+                <h3>Your 2025 Abundance Path</h3>
+                <p id="wealthMessage"></p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="screenshot-btn" onclick="takeScreenshot()">📸 Save This</button>
+                <button class="restart-btn" onclick="restart()">🔄 Create Another</button>
+            </div>
+
+            <div class="quote">
+                "Abundance is not something we acquire. It is something we tune into." - Wayne Dyer
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        const zodiacData = {
+            aries: {
+                symbol: '♈',
+                affirmation: 'Your bold courage opens doors to unlimited wealth. Every action you take plants seeds of abundance.',
+                wealth: 'Your fiery determination and leadership magnetize opportunities in 2025. Trust your instincts in financial decisions, and watch as your brave initiatives multiply your resources. Your natural ability to pioneer creates pathways where others see obstacles.'
+            },
+            taurus: {
+                symbol: '♉',
+                affirmation: 'You are a magnet for material wealth and lasting prosperity. Abundance flows to you naturally and effortlessly.',
+                wealth: 'Your grounded wisdom and patience build empires in 2025. Your innate understanding of value creation attracts stable, long-term wealth. Trust the steady growth process - your persistence transforms dreams into tangible reality.'
+            },
+            gemini: {
+                symbol: '♊',
+                affirmation: 'Your brilliant mind creates multiple streams of abundant income. Ideas flow to you like golden rivers.',
+                wealth: 'Your versatility and communication gifts unlock diverse revenue channels in 2025. Your ability to connect dots others miss leads to innovative wealth strategies. Embrace your curiosity - it guides you to hidden treasures.'
+            },
+            cancer: {
+                symbol: '♋',
+                affirmation: 'You nurture wealth as naturally as you nurture others. Your intuition guides you to prosperous shores.',
+                wealth: 'Your emotional intelligence and caring nature create sustainable abundance in 2025. Your ability to build trust opens doors to collaborative wealth. Listen to your intuition - it knows the path to security and prosperity.'
+            },
+            leo: {
+                symbol: '♌',
+                affirmation: 'You radiate abundance like the sun radiates light. Prosperity is your natural birthright and state of being.',
+                wealth: 'Your confidence and creative power attract royal opportunities in 2025. Your generous spirit creates a circulation of abundance that always returns multiplied. Shine brightly - your authentic expression magnetizes success.'
+            },
+            virgo: {
+                symbol: '♍',
+                affirmation: 'Your meticulous wisdom creates perfect systems for wealth multiplication. Excellence attracts abundance to you.',
+                wealth: 'Your analytical brilliance and attention to detail optimize wealth creation in 2025. Your service-oriented approach builds valuable systems that generate lasting income. Trust your process - your precision creates perfection in prosperity.'
+            },
+            libra: {
+                symbol: '♎',
+                affirmation: 'You balance giving and receiving with grace. Harmonious abundance flows through all areas of your life.',
+                wealth: 'Your diplomatic gifts and aesthetic sense create beautiful wealth opportunities in 2025. Your ability to create win-win situations attracts collaborative abundance. Partnerships become prosperity portals for you.'
+            },
+            scorpio: {
+                symbol: '♏',
+                affirmation: 'Your transformative power turns everything you touch into gold. You fearlessly create profound abundance.',
+                wealth: 'Your intense focus and strategic depth unlock hidden wealth resources in 2025. Your ability to see beneath surfaces reveals opportunities others overlook. Trust your power - transformation is your path to prosperity.'
+            },
+            sagittarius: {
+                symbol: '♐',
+                affirmation: 'Your expansive vision attracts boundless opportunities. The universe conspires to fulfill your abundant dreams.',
+                wealth: 'Your optimistic spirit and philosophical wisdom attract growth opportunities in 2025. Your willingness to explore unknown territories leads to fortunate discoveries. Think big - your vision creates your wealth reality.'
+            },
+            capricorn: {
+                symbol: '♑',
+                affirmation: 'You build enduring empires with disciplined mastery. Success and wealth bow to your unwavering commitment.',
+                wealth: 'Your ambitious drive and structural genius create legacy wealth in 2025. Your long-term thinking and strategic patience build mountains of prosperity. Keep climbing - the summit holds your greatest treasures.'
+            },
+            aquarius: {
+                symbol: '♒',
+                affirmation: 'Your innovative genius creates future wealth today. Your unique vision opens unprecedented abundance channels.',
+                wealth: 'Your visionary thinking and humanitarian heart attract revolutionary opportunities in 2025. Your ability to see the future creates wealth ahead of the curve. Trust your uniqueness - innovation is your prosperity code.'
+            },
+            pisces: {
+                symbol: '♓',
+                affirmation: 'You flow with infinite abundance like water flows to the ocean. Dreams manifest into reality through your faith.',
+                wealth: 'Your intuitive gifts and creative imagination manifest miraculous abundance in 2025. Your spiritual connection guides you to aligned prosperity. Trust the flow - surrender opens doors logic cannot see.'
+            }
+        };
+
+        function unlockAbundance() {
+            const name = document.getElementById('userName').value.trim();
+            const sign = document.getElementById('zodiacSign').value;
+
+            if (!name) {
+                alert('Please enter your name to unlock your abundance portal! 💫');
+                return;
+            }
+
+            if (!sign) {
+                alert('Please select your zodiac sign to discover your personalized path! ✨');
+                return;
+            }
+
+            const data = zodiacData[sign];
+
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('displaySign').textContent = data.symbol;
+            document.getElementById('affirmationText').textContent = `${name}, ${data.affirmation}`;
+            document.getElementById('wealthMessage').textContent = data.wealth;
+
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('resultScreen').classList.add('active');
+        }
+
+        function takeScreenshot() {
+            alert('📸 Take a screenshot now to save your personalized abundance message!\n\nTip: On most phones, press Power + Volume Down simultaneously.');
+        }
+
+        function restart() {
+            document.getElementById('welcomeScreen').style.display = 'block';
+            document.getElementById('resultScreen').classList.remove('active');
+            document.getElementById('userName').value = '';
+            document.getElementById('zodiacSign').value = '';
+        }
+    </script>
+</body>
+</html>
